@@ -323,9 +323,9 @@
 							<h2>Manage <b>your health</b></h2>
 						</div>
 						<div class="col-xs-6">
-							<a href="/add" class="btn btn-success" data-toggle="modal"><i
+							<a href="/enterdata" class="btn btn-success" data-toggle="modal"><i
 									class="material-icons">&#xE147;</i> <span>Add New Data</span></a>
-							<a href="/delete_data.html" class="btn btn-danger" data-toggle="modal"><i
+							<a href="/deleteall" class="btn btn-danger" data-toggle="modal"><i
 									class="material-icons">&#xE15C;</i> <span>Delete</span></a>
 						</div>
 					</div>
@@ -333,10 +333,11 @@
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-
+							<th>ID</th>
 							<th>Name</th>
 							<th>Contact</th>
 							<th>Email</th>
+							<th>DOB</th>
 							<th>Gender</th>
 							<th>Country</th>
 							<th>State</th>
@@ -349,18 +350,21 @@
 						{% for row in result %}
 
 						<tr>
+							<td>{{row['id']}}</td>
 							<td>{{row['name']}}</td>
 							<td>{{row['phone_no']}}</td>
 							<td>{{row['e_mail']}}</td>
-							<td>{{row['state']}}</td>
+							<td>{{row['date_of_birth']}}</td>
+							<td>{{row['gender']}}</td>
 							<td>{{row['country']}}</td>
+							<td>{{row['state']}}</td>
 							<td>{{row['diseases']}}</td>
 							<td>{{row['symptoms']}}</td>
-							<td>{{row['date_of_birth']}}</td>
 
-							<td> <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+
+							<td> <a href="/update-data" class="edit" data-toggle="modal"><i class="material-icons"
 										data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
-							<td> <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+							<td> <a href="/delete/" class="delete" data-toggle="modal"><i
 										class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 
