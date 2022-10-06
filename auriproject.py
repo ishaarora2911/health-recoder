@@ -41,12 +41,16 @@ def view():
     #     file.write(line)
     return render_template("showdata.html", result=rows)
 
-@app.route("/delete/<id>")
-def delete_customer_from_db(name):
-    db.collection('restaurants').document(name).delete()
+@app.route("/delete")
+def delete_customer_from_db():
+    documents = db.collection('patient').get()
+    for document in documents:
+        key= document.id
+
+    db.collection('patient').document(key).delete()
     print("Document Deleted...")
 
-    return render_template("success.html", message="Customer with ID " + id + " Deleted Successfully..")
+    return render_template("successs.html", message="Customer with ID  Deleted Successfully..")
 
 
 @app.route("/savedata", methods=["POST"])
