@@ -5,7 +5,8 @@ app = Flask("disease",template_folder="web")
 db = firestore.client()
 print("run")
 patients=Patient()
-
+newdocs=vars(patients)
+updated = vars(patients)
 @app.route("/")
 def index():
     print("running")
@@ -77,9 +78,18 @@ def save_data_in_db():
 
     return render_template("successs.html", message=patients.name + " Inserted Successfully...")
 
-@app.route("/update-data")
+@app.route("/updates", methods=["GET"])
 def update_customer():
-    return render_template("update_info.html")
+    documents = db.collection('patient').get()
+    for document in documents:
+        key = document.id
+
+
+
+    db.collection('patient').document('key').set(newdocs)
+    print("Document Updated..")
+
+    return render_template("editdata.html")
 
 def main():
     app.run(host='127.0.0.1', port=8083)
