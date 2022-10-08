@@ -32,6 +32,7 @@ def view():
         print(type(document))
         doc = document.to_dict()
         doc['id'] = document.id
+        print(document.id)
         rows.append(doc)
 
        # line = "{id},{name},{phone_no}\n".format_map(doc)
@@ -42,13 +43,14 @@ def view():
     #     file.write(line)
     return render_template("showdata.html", result=rows)
 
-@app.route("/delete")
-def delete_customer_from_db():
-    documents = db.collection('patient').get()
-    for document in documents:
-        key= document.id
+@app.route("/delete/<id>")
+def delete_customer_from_db(id):
+    #documents = db.collection('patient').get()
+    print(id)
+    # p1=Patient(id=id)
+    # p1.deletes(id)
 
-    db.collection('patient').document(key).delete()
+    db.collection('patient').document(id).delete()
     print("Document Deleted...")
 
     return render_template("successs.html", message="Customer with ID  Deleted Successfully..")
@@ -57,7 +59,8 @@ def delete_customer_from_db():
 @app.route("/savedata", methods=["POST"])
 def save_data_in_db():
     print("save health executed")
-    patients=Patient(name=request.form["name"],
+    patients=Patient(
+        name=request.form["name"],
                     phone_no=request.form["txtPhone"],
                     e_mail=request.form["mail"],
                      date_of_birth=request.form["dob"],
@@ -69,7 +72,7 @@ def save_data_in_db():
                      symptoms=request.form["symptoms"])
 
     if len(patients.name) == 0:
-        return render_template("error.html", message="Name cannot be Empty...")
+        return render_template("errors.html", message="Name cannot be Empty...")
 
     print(vars(patients))
     document=(vars(patients))
@@ -78,11 +81,8 @@ def save_data_in_db():
 
     return render_template("successs.html", message=patients.name + " Inserted Successfully...")
 
-@app.route("/updates", methods=["GET"])
+@app.route("/update/<id>")
 def update_customer():
-    documents = db.collection('patient').get()
-    for document in documents:
-        key = document.id
 
 
 

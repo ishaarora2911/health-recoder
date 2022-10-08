@@ -12,9 +12,9 @@ db = firestore.client()# got the access of cloud database
 
 class Patient:
 
-    def __init__(self, id=None, name=None, phone_no=None, e_mail=None, date_of_birth=None, gender=None,
+    def __init__(self, id=id, name=None, phone_no=None, e_mail=None, date_of_birth=None, gender=None,
                  country=None, state=None,diseases=None, symptoms=None):
-        self.id=id
+        self.id = id
         self.name = name
         self.phone_no = phone_no
         self.e_mail = e_mail
@@ -32,3 +32,6 @@ class Patient:
             print(document.to_dict())
 
         return documents
+    def deletes(self,key):
+        db.collection('patient').document(id).delete()
+        print("Document Deleted...")

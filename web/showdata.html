@@ -334,6 +334,7 @@
 					<thead>
 						<tr>
 							<th>ID</th>
+
 							<th>Name</th>
 							<th>Contact</th>
 							<th>Email</th>
@@ -351,6 +352,8 @@
 
 						<tr>
 							<td>{{row['id']}}</td>
+
+
 							<td>{{row['name']}}</td>
 							<td>{{row['phone_no']}}</td>
 							<td>{{row['e_mail']}}</td>
@@ -362,9 +365,12 @@
 							<td>{{row['symptoms']}}</td>
 
 
-							<td> <a href="/updates" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>
-							<td> <a href="/delete" class="delete" data-toggle="modal"><i
+							<td> <a href="/update/{{row['id']}}" class="edit" data-toggle="modal">
+								<i class="material-icons"
+										data-toggle="tooltip" title="Edit">&#xE254;</i>
+
+							</a></td>
+							<td> <a href="/delete/{{row['id']}}" class="delete" data-toggle="modal"><i
 										class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 							</td>
 

@@ -27,10 +27,10 @@
 
     <div class="container mt-3">
       <h2>Add Health Data</h2>
-      <form action="/updates/{{key }}" method="POST">
+      <form action="/savedata" method="POST">
            <div class="mb-3 mt-3">
           <label>Name:</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name " name="name" value="{{name}}">
+          <input type="text" class="form-control" id="name" placeholder="Enter your name " name="name" value="{row{name}}">
         </div>
         <div class="mb-3 mt-3">
           <label>Phone:</label>
