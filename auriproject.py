@@ -81,15 +81,18 @@ def save_data_in_db():
 
     return render_template("successs.html", message=patients.name + " Inserted Successfully...")
 
-@app.route("/update/<id>")
-def update_customer():
-
-
-
-    db.collection('patient').document('key').set(newdocs)
-    print("Document Updated..")
-
-    return render_template("editdata.html")
+# @app.route("/updates/<id>", methods=["GET"])
+# def update_customer():
+#     documents = db.collection('patient').get()
+#     for document in documents:
+#         key = document.id
+#
+#
+#
+#     db.collection('patient').document('key').set(newdocs)
+#     print("Document Updated..")
+#
+#     return render_template("editdata.html")
 
 def main():
     app.run(host='127.0.0.1', port=8083)
