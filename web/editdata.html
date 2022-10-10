@@ -27,44 +27,47 @@
 
     <div class="container mt-3">
       <h2>Add Health Data</h2>
-      <form action="/savedata" method="POST">
+      <form action="/updatedata/{{id}}" method="POST">
+
            <div class="mb-3 mt-3">
           <label>Name:</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter your name " name="name" value="{row{name}}">
+          <input type="text" class="form-control" id="name" placeholder="Enter your name " name="name" value="{{row['name']}}">
         </div>
         <div class="mb-3 mt-3">
           <label>Phone:</label>
-          <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" name="txtPhone">
+          <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" name="txtPhone"  value="{{row['phone_no']}}">
         </div>
         <div class="mb-3">
           <label>E-mail:</label>
-          <input type="text" class="form-control" id="mail" placeholder="Enter your mail - id" name="mail">
+          <input type="text" class="form-control" id="mail" placeholder="Enter your mail - id" name="mail" value="{{row['e_mail']}}">
         </div>
         <div class="mb-3 mt-3">
           <label>DOB:</label>
-          <input type="text" class="form-control" id="dob" placeholder="Enter Date-of-birth" name="dob">
+          <input type="text" class="form-control" id="dob" placeholder="Enter Date-of-birth" name="dob" value="{{row['date_of_birth']}}">
         </div>
         <div class="mb-3">
           <label>Gender:</label>
-          <input type="text" class="form-control" id="gender" placeholder="Enter gender" name="gender">
+          <input type="text" class="form-control" id="gender" placeholder="Enter gender" name="gender" value="{{row['gender']}}">
         </div>
         <div class="mb-3">
           <label>Country:</label>
-          <input type="text" class="form-control" id="country" placeholder="Enter your country" name="country">
+          <input type="text" class="form-control" id="country" placeholder="Enter your country" name="country" value="{{row['country']}}">
         </div>
           <div class="mb-3">
           <label>State</label>
-          <input type="text" class="form-control" id="state" placeholder="Enter your state" name="state">
+          <input type="text" class="form-control" id="state" placeholder="Enter your state" name="state" value="{{row['state']}}">
         </div>
           <div class="mb-3">
           <label>Disease:</label>
-          <input type="text" class="form-control" id="disease" placeholder="Enter your disease" name="disease">
+          <input type="text" class="form-control" id="disease" placeholder="Enter your disease" name="disease" value="{{row['diseases']}}">
         </div>
             <div class="mb-3 mt-3">
         <label class="form-label">Symptoms:</label>
-            <textarea class="form-control" id="symptoms"  placeholder="Enter your symptoms" name="symptoms"></textarea>
+            <textarea class="form-control" id="symptoms"  placeholder="Enter your symptoms" name="symptoms" value="{{row['symptoms']}}"></textarea>
       </div>
         <button type="update" class="btn btn-primary">update Health Data</button>
+
+
       </form>
     </div>
 
