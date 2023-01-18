@@ -23,7 +23,7 @@ def add_health_log():
 @app.route("/show")
 def view():
     rows = []
-
+    lines=[]
     documents = db.collection('patient').get()
 
     for document in documents:
@@ -33,6 +33,14 @@ def view():
         doc['id'] = document.id
         print(document.id)
         rows.append(doc)
+        line = "{name},{phone_no},{e_mail},{date_of_birth},{gender},{country},{state},{diseases},{symptoms}\n".format_map(doc)
+
+        lines.append(line)
+
+    file = open('datas.csv', 'a')
+    for line in lines:
+        file.write(line)
+
 
     return render_template("showdata.html", result=rows)
 
@@ -50,6 +58,7 @@ def save_data_in_db():
     print("save health executed")
     patients = Patient(
         name=request.form["name"],
+
         phone_no=request.form["txtPhone"],
         e_mail=request.form["mail"],
         date_of_birth=request.form["dob"],
@@ -92,6 +101,7 @@ def update_data_in_db(id):
         e_mail=request.form["mail"],
         date_of_birth=request.form["dob"],
         gender=request.form["gender"],
+
         country=request.form["country"],
         state=request.form["state"],
         diseases=request.form["disease"],
@@ -106,7 +116,7 @@ def update_data_in_db(id):
     return render_template("successs.html", message=patients.name + " Inserted Successfully...")
 
 def main():
-    app.run(host='127.0.0.1', port=8083)
+    app.run(host='127.0.0.1', port=8082)
 
 
 if __name__ == "__main__":

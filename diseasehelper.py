@@ -36,3 +36,6 @@ class Patient:
     # def deletes(self,key):
     #     db.collection('patient').document(id).delete()
     #     print("Document Deleted...")
+patients=Patient()
+print(vars(patients))
+document = (vars(patients))
